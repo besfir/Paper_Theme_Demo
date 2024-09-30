@@ -84,8 +84,11 @@ jobs:
             let unlighthouseDirPath = '${{ env.unlighthouse-dir-path }}';
             return joinPaths(baseUrl, unlighthouseDirPath)
 
+      - name: Get result
+        run: echo "${{ steps.ufo.outputs.result }}"
+
       - name: Unlighthouse assertions and client
-        run: unlighthouse-ci --site ${{ steps.deployment.outputs.page_url }} --budget 75 --build-static --output-path ${{ env.unlighthouse-dir-path }} --router-prefix ${{ steps.ufo.result }}
+        run: unlighthouse-ci --site ${{ steps.deployment.outputs.page_url }} --budget 75 --build-static --output-path ${{ env.unlighthouse-dir-path }} --router-prefix ${{ steps.ufo.outputs.result }}
 
       - name: Upload generated site as artifact
         uses: actions/upload-pages-artifact@v3
