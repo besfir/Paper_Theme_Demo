@@ -41,7 +41,7 @@ jobs:
         with:
           name: nuxt-build
           github-token: ${{ secrets.TOKEN }}
-          repository: besfir/Besfir-Blog
+          repository: besfir/Simple-Blog
           run-id: ${{ inputs.workflowRunId }}
 
       - name: Upload generated site as artifact
@@ -111,7 +111,7 @@ jobs:
             const remoteArtifactId = ${{ inputs.artifactId }}
             await github.rest.actions.deleteArtifact({
               owner: 'besfir',
-              repo: 'Besfir-Blog',
+              repo: 'Simple-Blog',
               artifact_id: remoteArtifactId
             });
             console.log(`Artifact with ID ${remoteArtifactId} deleted successfully.`);
